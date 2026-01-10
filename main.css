@@ -311,7 +311,7 @@ body{
 
 #menu:target ~ .menu-overlay{
   opacity: 1;
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 /* ===== Search overlay (JS only) ===== */
@@ -327,7 +327,7 @@ body{
 
 body.search-open .search-overlay{
   opacity: 1;
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 /* ===== Search modal (JS only) ===== */
@@ -345,8 +345,19 @@ body.search-open .search-overlay{
 
 body.search-open .search{
   opacity: 1;
+  pointer-events: none;
+}
+
+#menu:target ~ .menu-overlay{
+  opacity: 1;
   pointer-events: auto;
 }
+
+body.search-open .search-overlay{
+  opacity: 1;
+  pointer-events: auto;
+}
+
 
 .search__inner{
   width: min(860px, 92vw);
