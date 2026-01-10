@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>A'tsimaani Conference 2026</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="icon" type="image/x-icon" href="img/logo.ico">
+</head>
+
+<body>
+  <!-- Off-canvas menu -->
+  <nav class="menu" aria-label="Site menu" id="menu">
+    <h2>Menu</h2>
+
+    <ul class="menu-list">
+      <li class="menu-item">
+        <a class="menu-link" href="program/">Program</a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" href="theme/">Theme</a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" href="registration/">Registration</a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" href="contact/">Contact</a>
+      </li>
+
+      <li class="menu-item" data-dropdown>
+        <button class="menu-toggle" type="button" aria-expanded="false">
+          Keynote speakers
+          <span class="chev">▾</span>
+        </button>
+        <div class="submenu" role="group" aria-label="Keynote speakers submenu">
+          <!-- Later: add links like keynote-speakers/name/ -->
+          <a href="keynote-speakers/">All keynote speakers</a>
+        </div>
+      </li>
+
+      <li class="menu-item" data-dropdown>
+        <button class="menu-toggle" type="button" aria-expanded="false">
+          For attendees
+          <span class="chev">▾</span>
+        </button>
+        <div class="submenu" role="group" aria-label="For attendees submenu">
+          <a href="for-attendees/accommodations/">Accommodations</a>
+          <a href="for-attendees/financial-support/">Financial support</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="overlay" id="overlay" tabindex="-1" aria-hidden="true"></div>
+
+  <!-- Everything that should "push" right -->
+  <div class="layout" id="layout">
+    <header class="topbar" role="banner">
+      <div class="left">
+        <button class="iconbtn compact" id="hamburger" type="button" aria-controls="menu" aria-expanded="false">
+          <span class="icon" aria-hidden="true">☰</span>
+          <span class="sr-only">Open menu</span>
+        </button>
+
+        <button class="iconbtn compact" type="button" aria-label="Search">
+          <span class="icon" aria-hidden="true">⌕</span>
+        </button>
+
+        <a class="iconbtn compact" href="./" aria-label="Home">
+          <span class="icon" aria-hidden="true">⌂</span>
+        </a>
+      </div>
+
+      <div class="right">
+        <button class="iconbtn" type="button" aria-label="Language">
+          Language
+        </button>
+        <a class="iconbtn" href="about/">About</a>
+      </div>
+    </header>
+
+    <section class="hero" aria-label="Conference hero">
+      <div class="hero-inner">
+        <p class="kicker">Conference • 2026</p>
+        <h1 class="title">Your Conference Name</h1>
+        <p class="subtitle">
+          Optional one-line tagline here (you can remove this if you want it even cleaner).
+        </p>
+      </div>
+    </section>
+
+    <main>
+      <div class="wrap">
+        <p class="blurb">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. (You’ll replace this later.)
+        </p>
+
+        <h2 class="section-title">Explore</h2>
+        <div class="cards">
+          <a class="card" href="keynote-speakers/">
+            <div class="card-media" style='background-image:url("assets/card-keynotes.jpg")'></div>
+            <div class="card-body">
+              <h3 class="card-title">Keynote speakers</h3>
+              <p class="card-text">Meet the keynote speakers and see their abstracts and bios.</p>
+              <div class="card-meta">
+                <span>Speakers</span><span aria-hidden="true">→</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="card" href="for-attendees/">
+            <div class="card-media" style='background-image:url("assets/card-attendees.jpg")'></div>
+            <div class="card-body">
+              <h3 class="card-title">For attendees</h3>
+              <p class="card-text">Travel info, accommodations, accessibility, and support.</p>
+              <div class="card-meta">
+                <span>Practical info</span><span aria-hidden="true">→</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="card" href="program/">
+            <div class="card-media" style='background-image:url("assets/card-program.jpg")'></div>
+            <div class="card-body">
+              <h3 class="card-title">Program</h3>
+              <p class="card-text">Browse the schedule, sessions, and events.</p>
+              <div class="card-meta">
+                <span>Schedule</span><span aria-hidden="true">→</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="card" href="registration/">
+            <div class="card-media" style='background-image:url("assets/card-registration.jpg")'></div>
+            <div class="card-body">
+              <h3 class="card-title">Registration</h3>
+              <p class="card-text">Register, fees, deadlines, and confirmation details.</p>
+              <div class="card-meta">
+                <span>Sign up</span><span aria-hidden="true">→</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const body = document.body;
+    const hamburger = document.getElementById('hamburger');
+    const overlay = document.getElementById('overlay');
+
+    function setMenu(open){
+      body.classList.toggle('menu-open', open);
+      hamburger.setAttribute('aria-expanded', String(open));
+      if(open){
+        // focus first focusable item in menu
+        const first = document.querySelector('.menu a, .menu button');
+        first && first.focus();
+      }else{
+        hamburger.focus();
+      }
+    }
+
+    hamburger.addEventListener('click', () => {
+      setMenu(!body.classList.contains('menu-open'));
+    });
+
+    overlay.addEventListener('click', () => setMenu(false));
+
+    // ESC closes menu
+    window.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && body.classList.contains('menu-open')){
+        setMenu(false);
+      }
+    });
+
+    // Dropdowns in menu
+    document.querySelectorAll('.menu-item[data-dropdown]').forEach(item => {
+      const btn = item.querySelector('.menu-toggle');
+      btn.addEventListener('click', () => {
+        const isOpen = item.getAttribute('data-open') === 'true';
+        item.setAttribute('data-open', String(!isOpen));
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+  </script>
+</body>
+</html>
