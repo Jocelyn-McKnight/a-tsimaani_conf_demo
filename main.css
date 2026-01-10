@@ -524,6 +524,20 @@ body.search-open .search{
   max-width: min(980px, 92vw);
 }
 
+/* Shorter hero for keynote / profile pages */
+.hero--profile{
+  min-height: 50vh;        /* desktop */
+  padding-top: calc(var(--nav-h) + 32px);
+  padding-bottom: 32px;
+}
+
+/* Even shorter on small screens */
+@media (max-width: 768px){
+  .hero--profile{
+    min-height: 38vh;
+  }
+}
+
 .kicker{
   color: var(--muted);
   letter-spacing: .08em;
