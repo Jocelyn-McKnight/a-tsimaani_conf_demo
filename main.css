@@ -39,7 +39,9 @@ body{
   border:0;
 }
 
-/* ===== Top bar ===== */
+/* =========================
+   TOP BAR
+   ========================= */
 .topbar{
   position: fixed;
   inset:0 0 auto 0;
@@ -145,22 +147,26 @@ body{
 
 .navlink:focus-visible{ outline:none; }
 
-/* =========================================
-   MENU (CSS-only open with :target + tabs)
-   ========================================= */
+/* =========================
+   MENU (CSS-only open with :target + tab radios)
+   IMPORTANT: Full top-to-bottom on all screens
+   ========================= */
 
 /* Off-canvas container */
 .menu{
   position: fixed;
   top:0; left:0;
-  height: 100dvh;
+  height: 100vh;            /* fallback */
+  height: 100dvh;           /* modern */
   width: var(--menu-w-desktop);
   max-width: 920px;
+
   transform: translateX(-105%);
   transition: transform .35s ease;
   z-index: 60;
   box-shadow: var(--shadow);
-  overflow: hidden;
+
+  overflow: hidden;         /* keep edges clean */
 }
 
 /* When URL hash is #menu */
@@ -183,25 +189,44 @@ body{
     width: var(--menu-w-mobile);
     max-width: none;
   }
-
   #menu:target ~ .layout{
     transform: translateX(var(--menu-w-mobile));
   }
 }
 
-/* Two column layout */
+/* Make the menu’s inner containers stretch full height */
+.menu__inner{
+  height: 100%;
+}
+
 .menu__grid{
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1.25fr;
 }
 
+/* Columns are full height and scroll internally if needed */
 .menu__col{
-  padding: calc(var(--nav-h) + 18px) 34px 22px; /* slightly tighter */
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  /* KEY CHANGE:
+     Use padding-top instead of calc(var(--nav-h) + ...),
+     so menu content starts at the very top (no “gap”).
+  */
+  padding: 38px 34px 24px;
 }
 
 .menu__col--left{ background: var(--menu-bg); }
 .menu__col--right{ background: var(--menu-bg2); }
+
+/* On shorter screens, tighten spacing so everything fits better */
+@media (max-height: 760px){
+  .menu__col{
+    padding: 24px 28px 18px;
+  }
+}
 
 /* Radios (tab state) are invisible */
 .menu-tab{
@@ -218,6 +243,7 @@ body{
   color: var(--menu-dim);
 }
 
+/* Main menu items (links + toggle labels share this class in your HTML) */
 .menu__direct{
   display:block;
   padding: 14px 0;
@@ -249,7 +275,7 @@ body{
   user-select: none;
 }
 
-/* Optional “clear selection” line */
+/* Optional “clear selection” */
 .menu__reset{
   display: inline-block;
   margin-top: 18px;
@@ -266,7 +292,7 @@ body{
   text-decoration-thickness: 2px;
 }
 
-/* Right column */
+/* Right column header */
 .menu__goto{
   margin: 0 0 22px;
   font-size: 1.15rem;
@@ -353,7 +379,9 @@ body{
   pointer-events: auto;
 }
 
-/* ===== Search overlay (JS only) ===== */
+/* =========================
+   SEARCH (JS only)
+   ========================= */
 .search-overlay{
   position: fixed;
   inset: 0;
@@ -369,7 +397,6 @@ body.search-open .search-overlay{
   pointer-events: auto;
 }
 
-/* ===== Search modal (JS only) ===== */
 .search{
   position: fixed;
   inset: 0;
@@ -478,7 +505,9 @@ body.search-open .search{
   margin: 8px 2px;
 }
 
-/* ===== Hero ===== */
+/* =========================
+   HERO
+   ========================= */
 .hero{
   min-height: 100dvh;
   display:grid;
@@ -516,7 +545,9 @@ body.search-open .search{
   line-height: 1.55;
 }
 
-/* ===== Main ===== */
+/* =========================
+   MAIN
+   ========================= */
 main{
   background:#0f0f10;
   padding: 42px 18px 80px;
@@ -541,7 +572,9 @@ main{
   letter-spacing: .02em;
 }
 
-/* ===== Cards ===== */
+/* =========================
+   CARDS
+   ========================= */
 .cards{
   display:grid;
   grid-template-columns: repeat(12, 1fr);
@@ -598,11 +631,14 @@ main{
 @media (max-width: 840px){
   .card{ grid-column: span 12; }
   .card-media{ height:180px; }
+
   .menu__grid{ grid-template-columns: 1fr; }
   .menu__col--right{ border-top: 1px solid rgba(255,255,255,.14); }
 }
 
-/* ===== Footer ===== */
+/* =========================
+   FOOTER
+   ========================= */
 .site-footer{
   background:#0b0b0b;
   border-top: 1px solid rgba(255,255,255,.12);
@@ -648,35 +684,7 @@ main{
   transform: scaleX(1);
 }
 
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   .menu, .menu-overlay, .layout, .search, .search-overlay { transition:none; }
 }
-
-@media (max-height: 760px){
-  .menu__col{
-    padding: calc(var(--nav-h) + 28px) 34px 30px; 
-}
-
-  .menu__title{
-    margin-bottom: 18px;
-    font-size: 1.65rem;
-  }
-
-  .menu__direct{
-    padding: 12px 0;
-    font-size: 1.65rem;
-  }
-
-  .menu__spacer{
-    height: 14px;
-  }
-
-  .menu__goto{
-    margin-bottom: 16px;
-  }
-
-  .menu__linkItem{
-    padding: 6px 0;
-  }
-}
-
