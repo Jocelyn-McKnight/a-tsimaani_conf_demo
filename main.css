@@ -271,6 +271,30 @@ body.menu-open .menu{
   border-radius: 10px;
 }
 
+.menu__direct{
+  display:block;
+  padding: 14px 0;
+  font-size: 1.9rem;
+  font-weight: 520;
+  color: var(--menu-dim);
+  text-decoration: none;
+  letter-spacing: .01em;
+}
+
+.menu__direct:hover{
+  color: var(--menu-text);
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 2px;
+}
+
+.menu__direct:focus-visible{
+  outline: 3px solid rgba(255,255,255,.22);
+  outline-offset: 6px;
+  border-radius: 10px;
+}
+
+
 .menu__spacer{
   height: 22px;
 }
