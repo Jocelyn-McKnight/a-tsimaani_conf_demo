@@ -947,62 +947,6 @@ main{
 }
 
 /* =========================
-   ABOUT PAGE (add-on)
-   ========================= */
-
-/* page spacing uses your existing main + wrap */
-.blackfoot{
-  padding-top: 10px;
-}
-
-/* Use your panel style; make the long paragraph readable */
-.blackfoot .panel-text{
-  max-width: 78ch;
-}
-
-/* Diagram grid styled to match your panels/cards */
-.blackfoot .approaches{
-  margin-top: 12px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.blackfoot .approach{
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 18px;
-  background: rgba(255,255,255,.03);
-  padding: 14px 16px;
-  color: rgba(255,255,255,.90);
-}
-
-/* Make Heraldry full width */
-.blackfoot .approach.full-width{
-  grid-column: 1 / -1;
-}
-
-/* Issue callout matches your visual language */
-.blackfoot .center-note{
-  margin: 14px 0 0;
-  border-left: 4px solid var(--accent);
-  border-radius: 4px;
-  padding: 12px 14px;
-  background: rgba(255,255,255,.02);
-  color: rgba(255,255,255,.90);
-}
-
-.blackfoot .center-note strong{
-  color: rgba(255,255,255,.92);
-}
-
-/* Responsive */
-@media (max-width: 700px){
-  .blackfoot .approaches{
-    grid-template-columns: 1fr;
-  }
-}
-
-/* =========================
    FOOTER
    ========================= */
 .site-footer{
