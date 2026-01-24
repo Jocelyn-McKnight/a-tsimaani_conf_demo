@@ -1161,6 +1161,57 @@ main{
 }
 
 /* =========================
+   PROGRAM TABLE — readability fixes
+   ========================= */
+
+/* Add vertical column dividers */
+.program th:not(:last-child),
+.program td:not(:last-child){
+  border-right: 1px solid rgba(255,255,255,.14);
+}
+
+/* Increase horizontal padding for clarity */
+.program th,
+.program td{
+  padding: 14px 26px; /* was tighter before */
+}
+
+/* Give presenters column extra separation */
+.program .col-presenters{
+  padding-left: 34px;
+}
+
+/* Slightly tighten event column so columns feel distinct */
+.program .col-event{
+  padding-right: 34px;
+}
+
+/* Header row: stronger separation */
+.program thead th{
+  border-bottom: 1px solid rgba(255,255,255,.22);
+  color: rgba(255,255,255,.85);
+  letter-spacing: .02em;
+}
+
+/* Subtle row separation for long blocks */
+.program tbody tr{
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+/* Remove vertical lines on mobile stacked layout */
+@media (max-width: 720px){
+  .program th:not(:last-child),
+  .program td:not(:last-child){
+    border-right: none;
+  }
+
+  .program th,
+  .program td{
+    padding: 6px 0;
+  }
+}
+
+/* =========================
    FOOTER
    ========================= */
 .site-footer{
