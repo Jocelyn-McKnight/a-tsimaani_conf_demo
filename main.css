@@ -976,6 +976,191 @@ main{
 }
 
 /* =========================
+   CONFERENCE PROGRAM (matches site style)
+   Use: <div class="program"> ... </div>
+   ========================= */
+
+.program{
+  max-width: 1100px;            /* matches your .wrap size */
+  margin: 0 auto;
+  padding: 10px 0 0;            /* main already has padding */
+  color: var(--fg);
+}
+
+/* Header block (same language as .panel / .content-image) */
+.program__header{
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 18px;
+  background: rgba(255,255,255,.03);
+  box-shadow: 0 12px 40px rgba(0,0,0,.18);
+  padding: 18px 18px 16px;
+  margin: 0 0 18px;
+}
+
+.program__title{
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 3.2vw, 2.6rem); /* matches .page-title feel */
+  font-weight: 650;
+  letter-spacing: .01em;
+}
+
+.program__sub{
+  margin: 0;
+  max-width: 75ch;
+  color: rgba(255,255,255,.78);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+/* Optional small pill note */
+.program__tag{
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.03);
+  color: rgba(255,255,255,.72);
+  font-size: .9rem;
+}
+
+/* Day card */
+.program-day{
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 18px;
+  background: rgba(255,255,255,.03);
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,.18);
+  margin: 0 0 16px;
+}
+
+/* Day header */
+.program-day__head{
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.16);
+}
+
+.program-day__head h2{
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: .01em;
+}
+
+.program-meta{
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  color: rgba(255,255,255,.72);
+  font-size: .98rem;
+}
+
+.program-meta b{
+  color: rgba(255,255,255,.92);
+  font-weight: 650;
+}
+
+.program-themes{
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,.72);
+  line-height: 1.55;
+}
+
+.program-themes li{ margin: 2px 0; }
+
+/* Table */
+.program table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.program th,
+.program td{
+  padding: 12px 18px;
+  vertical-align: top;
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+
+.program th{
+  text-align: left;
+  font-size: .95rem;
+  color: rgba(255,255,255,.72);
+  font-weight: 650;
+  background: rgba(0,0,0,.10);
+}
+
+.program td{
+  color: rgba(255,255,255,.88);
+  line-height: 1.55;
+}
+
+.program .col-time{
+  width: 140px;
+  white-space: nowrap;
+  color: rgba(255,255,255,.78);
+  font-weight: 650;
+}
+
+.program .col-event{ width: 50%; }
+.program .col-presenters{ width: 35%; }
+
+/* Tiny accent line for important items (optional utility) */
+.program-accent{
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Mobile: stack rows into “cards” */
+@media (max-width: 720px){
+  .program table,
+  .program thead,
+  .program tbody,
+  .program th,
+  .program td,
+  .program tr{
+    display: block;
+  }
+
+  .program thead{ display: none; }
+
+  .program tr{
+    padding: 10px 18px;
+    border-top: 1px solid rgba(255,255,255,.10);
+  }
+
+  .program td{
+    border: 0;
+    padding: 6px 0;
+  }
+
+  .program td::before{
+    display: block;
+    margin-bottom: 2px;
+    font-size: .82rem;
+    font-weight: 650;
+    color: rgba(255,255,255,.62);
+    letter-spacing: .02em;
+  }
+
+  .program td[data-label="Time"]::before{ content: "Time"; }
+  .program td[data-label="Event"]::before{ content: "Event"; }
+  .program td[data-label="Presenters"]::before{ content: "Presenters/Facilitators"; }
+
+  .program .col-time{
+    width: auto;
+    white-space: normal;
+  }
+}
+
+/* =========================
    FOOTER
    ========================= */
 .site-footer{
