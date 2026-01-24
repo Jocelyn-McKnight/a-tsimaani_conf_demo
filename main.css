@@ -976,8 +976,8 @@ main{
 }
 
 /* =========================
-   CONFERENCE PROGRAM — GRID (FULL, COPY-PASTE)
-   Matches your dark/glass aesthetic + uses your existing vars
+   PROGRAM TABLE — readable version
+   (keeps real <table>)
    ========================= */
 
 .program{
@@ -986,42 +986,17 @@ main{
   color: var(--fg);
 }
 
-/* Header */
-.program__header{
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 18px;
-  background: rgba(255,255,255,.03);
-  box-shadow: 0 12px 40px rgba(0,0,0,.18);
-  padding: 18px 18px 16px;
-  margin: 0 0 18px;
-}
-
-.program__title{
-  margin: 0 0 8px;
-  font-size: clamp(2rem, 3.2vw, 2.6rem);
-  font-weight: 650;
-  letter-spacing: .01em;
-}
-
-.program__sub{
-  margin: 0;
-  max-width: 75ch;
-  color: rgba(255,255,255,.78);
-  font-size: 1.05rem;
-  line-height: 1.65;
-}
-
-/* Day card */
+/* Day card wrapper (optional, but matches your style) */
 .program-day{
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 18px;
   background: rgba(255,255,255,.03);
   box-shadow: 0 12px 40px rgba(0,0,0,.18);
-  margin: 0 0 16px;
   overflow: hidden;
+  margin: 0 0 18px;
 }
 
-/* Day header */
+/* Header inside each day */
 .program-day__head{
   padding: 16px 18px 12px;
   border-bottom: 1px solid rgba(255,255,255,.10);
@@ -1032,7 +1007,6 @@ main{
   margin: 0;
   font-size: 1.25rem;
   font-weight: 650;
-  letter-spacing: .01em;
 }
 
 .program-meta{
@@ -1044,116 +1018,116 @@ main{
   font-size: .95rem;
 }
 
-.program-meta b{
-  color: rgba(255,255,255,.92);
-  font-weight: 650;
-}
+.program-meta b{ color: rgba(255,255,255,.92); }
 
 .program-themes{
   margin: 10px 0 0;
   padding-left: 18px;
   color: rgba(255,255,255,.72);
-  line-height: 1.55;
 }
 
-.program-themes li{ margin: 2px 0; }
+/* ===== TABLE ITSELF ===== */
 
-/* =========================
-   GRID SCHEDULE (no tables)
-   ========================= */
-
-.program-grid{
-  display: grid;
+.program-table{
+  width: 100%;
+  border-collapse: separate; /* key: allows spacing + clearer lines */
+  border-spacing: 0;         /* keep clean edges */
+  table-layout: fixed;       /* prevents weird column jumping */
+  background: transparent;
 }
 
-/* Each row is a 3-column grid */
-.program-row{
-  display: grid;
-  grid-template-columns: 150px 1fr 320px; /* time | event | people */
-  border-top: 1px solid rgba(255,255,255,.10);
-}
+/* Column widths (tweak if you want) */
+.program-table col.col-time{ width: 150px; }
+.program-table col.col-event{ width: 55%; }
+.program-table col.col-people{ width: auto; }
 
-/* Header row inside each day */
-.program-row--head{
-  border-top: 0;
-  background: rgba(0,0,0,.12);
-}
+/* Sticky header (desktop) */
+.program-table thead th{
+  position: sticky;
+  top: 0; /* if you want below topbar, change to: top: var(--nav-h); */
+  z-index: 2;
 
-.program-row--head .program-cell{
+  text-align: left;
+  padding: 14px 18px;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(6px);
+  color: rgba(255,255,255,.82);
+  font-size: .95rem;
   font-weight: 650;
-  color: rgba(255,255,255,.75);
-  letter-spacing: .02em;
+  border-bottom: 1px solid rgba(255,255,255,.18);
 }
 
 /* Cells */
-.program-cell{
-  padding: 14px 18px;
-  line-height: 1.55;
+.program-table td{
+  padding: 16px 18px; /* bigger = easier to read */
+  vertical-align: top;
   color: rgba(255,255,255,.90);
+  line-height: 1.6;
+  border-bottom: 1px solid rgba(255,255,255,.10);
 }
 
-/* Vertical dividers */
-.program-cell--time,
-.program-cell--event{
-  border-right: 1px solid rgba(255,255,255,.14);
+/* Vertical column separators */
+.program-table th:not(:last-child),
+.program-table td:not(:last-child){
+  border-right: 1px solid rgba(255,255,255,.16);
 }
 
-/* Time column */
-.program-cell--time{
+/* Extra gutter feel between columns */
+.program-table td:nth-child(2){ padding-left: 26px; padding-right: 26px; }
+.program-table td:nth-child(3){ padding-left: 26px; }
+
+/* Time column: crisp */
+.program-table td:first-child{
   font-weight: 650;
   color: rgba(255,255,255,.86);
   white-space: nowrap;
 }
 
-/* People column slightly softer */
-.program-cell--people{
-  color: rgba(255,255,255,.82);
-}
-
-/* Muted rows (Break / Meals / etc.) */
-.program-row--muted{
-  background: rgba(255,255,255,.02);
-}
-
-.program-row--muted .program-cell{
-  color: rgba(255,255,255,.72);
-}
-
-/* Zebra striping for scanning (subtle) */
-.program-row:nth-child(even):not(.program-row--head){
+/* Zebra striping */
+.program-table tbody tr:nth-child(even){
   background: rgba(255,255,255,.015);
 }
 
-/* Better wrapping for long names/text */
-.program-cell--event,
-.program-cell--people{
+/* Hover highlight for scanning */
+.program-table tbody tr:hover{
+  background: rgba(230,183,103,.10);
+}
+
+/* Muted rows for breaks/meals */
+.program-table tr.is-muted td{
+  color: rgba(255,255,255,.72);
+  background: rgba(255,255,255,.02);
+}
+
+/* Prevent long names from blowing up layout */
+.program-table td{
   overflow-wrap: anywhere;
 }
 
-/* =========================
-   MOBILE: stacked cards
-   ========================= */
-@media (max-width: 900px){
-  .program-row{
-    grid-template-columns: 1fr;
-    padding: 10px 18px;
+/* ===== MOBILE: switch to stacked cards ===== */
+@media (max-width: 820px){
+  .program-table,
+  .program-table thead,
+  .program-table tbody,
+  .program-table th,
+  .program-table td,
+  .program-table tr{
+    display: block;
   }
 
-  .program-row--head{
-    display: none;
+  .program-table thead{ display: none; }
+
+  .program-table tr{
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(255,255,255,.10);
   }
 
-  .program-cell{
+  .program-table td{
+    border: 0;
     padding: 6px 0;
-    border-right: none !important;
   }
 
-  .program-cell--time{
-    font-size: 1.05rem;
-  }
-
-  .program-cell--event::before{
-    content: "Event";
+  .program-table td::before{
     display: block;
     margin-bottom: 2px;
     font-size: .82rem;
@@ -1162,14 +1136,14 @@ main{
     letter-spacing: .02em;
   }
 
-  .program-cell--people::before{
-    content: "Presenters / Facilitators";
-    display: block;
-    margin-bottom: 2px;
-    font-size: .82rem;
-    font-weight: 650;
-    color: rgba(255,255,255,.62);
-    letter-spacing: .02em;
+  .program-table td:nth-child(1)::before{ content: "Time"; }
+  .program-table td:nth-child(2)::before{ content: "Event"; }
+  .program-table td:nth-child(3)::before{ content: "Presenters / Facilitators"; }
+
+  .program-table td:nth-child(2),
+  .program-table td:nth-child(3){
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
