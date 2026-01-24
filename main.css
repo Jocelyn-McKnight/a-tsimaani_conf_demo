@@ -976,24 +976,52 @@ main{
 }
 
 /* =========================
-   PROGRAM TABLE — FINAL, STABLE
+   PROGRAM (your grid HTML, table-like + readable)
+   Targets: .program-grid .program-row .program-cell
    ========================= */
 
 .program{
   max-width: 1100px;
   margin: 0 auto;
+  color: var(--fg);
 }
 
-/* Day wrapper */
+/* Header box */
+.program__header{
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 18px;
+  background: rgba(255,255,255,.03);
+  box-shadow: 0 12px 40px rgba(0,0,0,.18);
+  padding: 18px 18px 16px;
+  margin: 0 0 18px;
+}
+
+.program__title{
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 3.2vw, 2.6rem);
+  font-weight: 650;
+  letter-spacing: .01em;
+}
+
+.program__sub{
+  margin: 0;
+  max-width: 75ch;
+  color: rgba(255,255,255,.78);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+/* Day card */
 .program-day{
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 18px;
   background: rgba(255,255,255,.03);
   box-shadow: 0 12px 40px rgba(0,0,0,.18);
-  margin-bottom: 20px;
   overflow: hidden;
+  margin: 0 0 18px;
 }
 
+/* Day header */
 .program-day__head{
   padding: 16px 18px 12px;
   border-bottom: 1px solid rgba(255,255,255,.10);
@@ -1001,92 +1029,132 @@ main{
 }
 
 .program-day__head h2{
-  margin: 0 0 8px;
+  margin: 0;
   font-size: 1.25rem;
   font-weight: 650;
+  letter-spacing: .01em;
 }
+
+.program-meta{
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  color: rgba(255,255,255,.72);
+  font-size: .95rem;
+}
+
+.program-meta b{ color: rgba(255,255,255,.92); }
 
 .program-themes{
-  margin: 0;
+  margin: 10px 0 0;
   padding-left: 18px;
-  color: rgba(255,255,255,.75);
+  color: rgba(255,255,255,.72);
+  line-height: 1.55;
 }
 
-/* Table wrapper (for safe horizontal scroll if ever needed) */
-.program-table-wrap{
+/* =========================
+   TABLE-LIKE GRID
+   ========================= */
+
+/* This is the "table body" */
+.program-grid{
+  /* if content ever gets wider, let it scroll rather than collapse */
   overflow-x: auto;
 }
 
-/* Table */
-.program-table{
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  table-layout: fixed;
+/* Each row is a 3-column table row */
+.program-row{
+  display: grid;
+  grid-template-columns: 150px 1fr 320px; /* time | event | presenters */
+  align-items: start;
+  border-top: 1px solid rgba(255,255,255,.10);
 }
 
-/* Column sizing */
-.program-table col.col-time{ width: 150px; }
-.program-table col.col-event{ width: 55%; }
-.program-table col.col-people{ width: auto; }
-
-/* Header */
-.program-table thead th{
-  text-align: left;
-  padding: 14px 18px;
+/* Header row inside each day */
+.program-row--head{
+  border-top: 0;
   background: rgba(0,0,0,.35);
+}
+
+.program-row--head .program-cell{
   color: rgba(255,255,255,.82);
-  font-size: .95rem;
   font-weight: 650;
-  border-bottom: 1px solid rgba(255,255,255,.18);
+  font-size: .95rem;
+  letter-spacing: .02em;
 }
 
 /* Cells */
-.program-table td{
+.program-cell{
   padding: 16px 18px;
-  vertical-align: top;
-  color: rgba(255,255,255,.90);
   line-height: 1.6;
-  border-bottom: 1px solid rgba(255,255,255,.10);
+  color: rgba(255,255,255,.90);
   overflow-wrap: anywhere;
 }
 
-/* Vertical separators */
-.program-table th:not(:last-child),
-.program-table td:not(:last-child){
+/* Vertical dividers between columns */
+.program-cell--time,
+.program-cell--event{
   border-right: 1px solid rgba(255,255,255,.16);
 }
 
-/* Time column */
-.program-table td:first-child{
+/* Time column styling */
+.program-cell--time{
   font-weight: 650;
-  white-space: nowrap;
   color: rgba(255,255,255,.86);
+  white-space: nowrap;
 }
 
-/* Zebra striping */
-.program-table tbody tr:nth-child(even){
+/* Add extra gutter feel (more space between columns) */
+.program-cell--event{
+  padding-left: 26px;
+  padding-right: 26px;
+}
+
+.program-cell--people{
+  padding-left: 26px;
+  color: rgba(255,255,255,.82);
+}
+
+/* Zebra striping for readability */
+.program-row:nth-child(even):not(.program-row--head){
   background: rgba(255,255,255,.015);
 }
 
-/* Hover highlight */
-.program-table tbody tr:hover{
+/* Hover highlight to help scanning across rows */
+.program-row:not(.program-row--head):hover{
   background: rgba(230,183,103,.10);
 }
 
-/* Muted rows (breaks, meals) */
-.program-table tr.is-muted td{
-  color: rgba(255,255,255,.72);
+/* Muted rows (breaks, meals, etc.) */
+.program-row--muted{
   background: rgba(255,255,255,.02);
 }
 
-/* Small screens: keep table, allow scroll */
-@media (max-width: 820px){
-  .program-table{
-    min-width: 760px;
+.program-row--muted .program-cell{
+  color: rgba(255,255,255,.72);
+}
+
+/* Optional: make the header "sticky" within viewport.
+   If you don't want sticky headers, delete this block. */
+@media (min-width: 821px){
+  .program-row--head{
+    position: sticky;
+    top: 0; /* If you want under your topbar, use: top: var(--nav-h); */
+    z-index: 5;
+    backdrop-filter: blur(6px);
   }
 }
 
+/* =========================
+   MOBILE: keep it table-like, allow horizontal scroll
+   (NO stacking into a list)
+   ========================= */
+@media (max-width: 820px){
+  .program-row{
+    min-width: 760px; /* forces scroll instead of collapsing */
+  }
+}
 
 
 /* =========================
