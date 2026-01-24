@@ -976,27 +976,24 @@ main{
 }
 
 /* =========================
-   PROGRAM TABLE — readable version
-   (keeps real <table>)
+   PROGRAM TABLE — FINAL, STABLE
    ========================= */
 
 .program{
   max-width: 1100px;
   margin: 0 auto;
-  color: var(--fg);
 }
 
-/* Day card wrapper (optional, but matches your style) */
+/* Day wrapper */
 .program-day{
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 18px;
   background: rgba(255,255,255,.03);
   box-shadow: 0 12px 40px rgba(0,0,0,.18);
+  margin-bottom: 20px;
   overflow: hidden;
-  margin: 0 0 18px;
 }
 
-/* Header inside each day */
 .program-day__head{
   padding: 16px 18px 12px;
   border-bottom: 1px solid rgba(255,255,255,.10);
@@ -1004,53 +1001,40 @@ main{
 }
 
 .program-day__head h2{
-  margin: 0;
+  margin: 0 0 8px;
   font-size: 1.25rem;
   font-weight: 650;
 }
 
-.program-meta{
-  margin-top: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 18px;
-  color: rgba(255,255,255,.72);
-  font-size: .95rem;
-}
-
-.program-meta b{ color: rgba(255,255,255,.92); }
-
 .program-themes{
-  margin: 10px 0 0;
+  margin: 0;
   padding-left: 18px;
-  color: rgba(255,255,255,.72);
+  color: rgba(255,255,255,.75);
 }
 
-/* ===== TABLE ITSELF ===== */
+/* Table wrapper (for safe horizontal scroll if ever needed) */
+.program-table-wrap{
+  overflow-x: auto;
+}
 
+/* Table */
 .program-table{
   width: 100%;
-  border-collapse: separate; /* key: allows spacing + clearer lines */
-  border-spacing: 0;         /* keep clean edges */
-  table-layout: fixed;       /* prevents weird column jumping */
-  background: transparent;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
 }
 
-/* Column widths (tweak if you want) */
+/* Column sizing */
 .program-table col.col-time{ width: 150px; }
 .program-table col.col-event{ width: 55%; }
 .program-table col.col-people{ width: auto; }
 
-/* Sticky header (desktop) */
+/* Header */
 .program-table thead th{
-  position: sticky;
-  top: 0; /* if you want below topbar, change to: top: var(--nav-h); */
-  z-index: 2;
-
   text-align: left;
   padding: 14px 18px;
   background: rgba(0,0,0,.35);
-  backdrop-filter: blur(6px);
   color: rgba(255,255,255,.82);
   font-size: .95rem;
   font-weight: 650;
@@ -1059,28 +1043,25 @@ main{
 
 /* Cells */
 .program-table td{
-  padding: 16px 18px; /* bigger = easier to read */
+  padding: 16px 18px;
   vertical-align: top;
   color: rgba(255,255,255,.90);
   line-height: 1.6;
   border-bottom: 1px solid rgba(255,255,255,.10);
+  overflow-wrap: anywhere;
 }
 
-/* Vertical column separators */
+/* Vertical separators */
 .program-table th:not(:last-child),
 .program-table td:not(:last-child){
   border-right: 1px solid rgba(255,255,255,.16);
 }
 
-/* Extra gutter feel between columns */
-.program-table td:nth-child(2){ padding-left: 26px; padding-right: 26px; }
-.program-table td:nth-child(3){ padding-left: 26px; }
-
-/* Time column: crisp */
+/* Time column */
 .program-table td:first-child{
   font-weight: 650;
-  color: rgba(255,255,255,.86);
   white-space: nowrap;
+  color: rgba(255,255,255,.86);
 }
 
 /* Zebra striping */
@@ -1088,64 +1069,24 @@ main{
   background: rgba(255,255,255,.015);
 }
 
-/* Hover highlight for scanning */
+/* Hover highlight */
 .program-table tbody tr:hover{
   background: rgba(230,183,103,.10);
 }
 
-/* Muted rows for breaks/meals */
+/* Muted rows (breaks, meals) */
 .program-table tr.is-muted td{
   color: rgba(255,255,255,.72);
   background: rgba(255,255,255,.02);
 }
 
-/* Prevent long names from blowing up layout */
-.program-table td{
-  overflow-wrap: anywhere;
-}
-
-/* ===== MOBILE: switch to stacked cards ===== */
+/* Small screens: keep table, allow scroll */
 @media (max-width: 820px){
-  .program-table,
-  .program-table thead,
-  .program-table tbody,
-  .program-table th,
-  .program-table td,
-  .program-table tr{
-    display: block;
-  }
-
-  .program-table thead{ display: none; }
-
-  .program-table tr{
-    padding: 12px 18px;
-    border-bottom: 1px solid rgba(255,255,255,.10);
-  }
-
-  .program-table td{
-    border: 0;
-    padding: 6px 0;
-  }
-
-  .program-table td::before{
-    display: block;
-    margin-bottom: 2px;
-    font-size: .82rem;
-    font-weight: 650;
-    color: rgba(255,255,255,.62);
-    letter-spacing: .02em;
-  }
-
-  .program-table td:nth-child(1)::before{ content: "Time"; }
-  .program-table td:nth-child(2)::before{ content: "Event"; }
-  .program-table td:nth-child(3)::before{ content: "Presenters / Facilitators"; }
-
-  .program-table td:nth-child(2),
-  .program-table td:nth-child(3){
-    padding-left: 0;
-    padding-right: 0;
+  .program-table{
+    min-width: 760px;
   }
 }
+
 
 
 /* =========================
