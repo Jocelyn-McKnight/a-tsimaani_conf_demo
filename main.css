@@ -1157,76 +1157,66 @@ main{
 }
 
 /* =========================
-   SPONSORS (logo grid)
+   SPONSORS (plain, no bubbles)
    ========================= */
-.sponsors__hint{
-  margin: 0 0 14px;
-  color: rgba(255,255,255,.72);
+.sponsors-plain{
+  max-width: 1100px;
+  margin: 26px auto 34px;
 }
 
-.sponsors__grid{
+.sponsors-plain__top{
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 14px;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  align-items: center;
 }
 
-/* Each sponsor acts like a subtle card */
-.sponsor{
-  grid-column: span 4;              /* 3 across on desktop */
-  display: block;
-  text-decoration: none;
-  border-radius: 18px;
-  padding: 14px;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.02);
-  transition: transform .12s ease, background .12s ease, border-color .12s ease;
-}
-
-.sponsor:hover{
-  transform: translateY(-2px);
-  background: rgba(255,255,255,.04);
-  border-color: rgba(255,255,255,.22);
-}
-
-.sponsor:focus-visible{
-  outline: 3px solid rgba(255,255,255,.28);
-  outline-offset: 3px;
-}
-
-/* Light “badge” so logos stay readable on dark background */
-.sponsor__logo{
-  height: 78px;                     /* consistent row height */
-  border-radius: 14px;
-  background: rgba(255,255,255,.92);
+.sponsors-plain__bottom{
+  margin-top: 18px;
   display: grid;
-  place-items: center;
-  padding: 10px 14px;
-  overflow: hidden;
+  justify-items: center;
 }
 
-/* For extra-wide wordmark logos */
-.sponsor__logo--wide{
-  height: 86px;
-}
-
-.sponsor__logo img{
+/* Key idea:
+   - Set a consistent "logo box" height
+   - Use object-fit: contain so nothing is cut off
+*/
+.sponsors-plain__logo{
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  max-width: 520px;        /* keeps them from getting huge */
+  height: 92px;            /* same height = similar visual weight */
+  object-fit: contain;     /* NEVER crops */
   display: block;
+  filter: none;
 }
 
-/* Tablet: 2 across */
-@media (max-width: 980px){
-  .sponsor{ grid-column: span 6; }
+/* Wordmark logo needs a bit more height */
+.sponsors-plain__logo--wide{
+  max-width: 860px;
+  height: 110px;           /* gives SSHRC breathing room */
 }
 
-/* Mobile: 1 across */
+/* Optional: very subtle consistency boost on dark bg
+   (remove if you truly want untouched) */
+.sponsors-plain__logo{
+  /* helps white backgrounds not look harsh; subtle only */
+  border-radius: 12px;
+}
+
+/* Mobile: stack all three cleanly */
 @media (max-width: 840px){
-  .sponsor{ grid-column: span 12; }
-  .sponsor__logo{ height: 84px; }
+  .sponsors-plain__top{
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .sponsors-plain__logo{
+    max-width: 620px;
+    height: 98px;
+  }
+  .sponsors-plain__logo--wide{
+    height: 120px;
+  }
 }
-
 
 
 /* =========================
