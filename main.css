@@ -18,6 +18,20 @@
   --menu-dim: rgba(255,255,255,.70);
 }
 
+a{
+  color: #E6B767;
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+
+a:visited{
+  color: #E6991C;
+}
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
 
