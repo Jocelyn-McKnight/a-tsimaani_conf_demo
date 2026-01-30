@@ -292,19 +292,26 @@ body{
 .menu__placeholder{ display: block; }
 .menu__panel{ display: none; }
 
+/* Hide placeholder + show correct panel */
+
 #tab-keynotes:checked ~ .menu__inner .menu__placeholder{ display:none; }
 #tab-keynotes:checked ~ .menu__inner .menu__panel--keynotes{ display:block; }
+
+#tab-organizers:checked ~ .menu__inner .menu__placeholder{ display:none; }
+#tab-organizers:checked ~ .menu__inner .menu__panel--organizers{ display:block; }
 
 #tab-attendees:checked ~ .menu__inner .menu__placeholder{ display:none; }
 #tab-attendees:checked ~ .menu__inner .menu__panel--attendees{ display:block; }
 
-#tab-attendees:checked ~ .menu__inner .menu__placeholder{ display:none; }
-#tab-attendees:checked ~ .menu__inner .menu__panel--organizers{ display:block; }
 
-/* Active underline in left column for toggles */
+/* Active underline in left column */
+
 #tab-keynotes:checked ~ .menu__inner label[for="tab-keynotes"],
-#tab-attendees:checked ~ .menu__inner label[for="tab-organizers"],
+#tab-organizers:checked ~ .menu__inner label[for="tab-organizers"],
 #tab-attendees:checked ~ .menu__inner label[for="tab-attendees"]{
+  text-decoration: underline;
+}
+
   color: var(--menu-text);
   text-decoration: underline;
   text-underline-offset: 8px;
