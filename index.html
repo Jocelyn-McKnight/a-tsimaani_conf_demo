@@ -10,6 +10,8 @@
 </head>
 
 <body>
+<div id="header"></div>
+
 <script>
   fetch('header.html')
     .then(r => {
@@ -18,10 +20,11 @@
     })
     .then(html => {
       document.getElementById('header').innerHTML = html;
-      initSearch(); // <-- important (see next section)
+      initSearch(); // this will work after we define initSearch below
     })
-    .catch(err => console.error(err));
+    .catch(err => console.error('Header load failed:', err));
 </script>
+
 
 
     <!-- MAIN -->
