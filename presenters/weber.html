@@ -14,7 +14,7 @@
 <div id="header"></div>
 
 <script>
-  fetch('../smallheader.html')
+  fetch('smallheader.html')
     .then(r => {
       if (!r.ok) throw new Error('Could not load header.html');
       return r.text();
