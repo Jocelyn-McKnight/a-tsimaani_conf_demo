@@ -211,6 +211,13 @@ body{
 .menu__col--left{ background: var(--menu-bg); }
 .menu__col--right{ background: var(--menu-bg2); }
 
+/* Right column: allow scrolling when lists are long */
+.menu__col--right{
+  overflow-y: auto;
+  padding-right: 12px; /* keeps scrollbar off the text */
+}
+
+
 /* Radios (tab state) are invisible */
 .menu-tab{
   position: absolute;
