@@ -11,7 +11,20 @@
 </head>
 
 <body>
+<div id="header"></div>
 
+<script>
+  fetch('smallheader.html')
+    .then(r => {
+      if (!r.ok) throw new Error('Could not load header.html');
+      return r.text();
+    })
+    .then(html => {
+      document.getElementById('header').innerHTML = html;
+      initSearch(); // this will work after we define initSearch below
+    })
+    .catch(err => console.error('Header load failed:', err));
+</script>
 
     <!-- MAIN -->
     <main>
