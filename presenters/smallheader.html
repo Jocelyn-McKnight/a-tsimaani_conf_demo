@@ -4,6 +4,7 @@
   <!-- CSS-only “tabs” (radios) -->
   <input class="menu-tab" type="radio" name="menuTab" id="tab-none" checked>
   <input class="menu-tab" type="radio" name="menuTab" id="tab-keynotes">
+  <input class="menu-tab" type="radio" name="menuTab" id="tab-organizers">
   <input class="menu-tab" type="radio" name="menuTab" id="tab-attendees">
 
   <div class="menu__inner">
@@ -23,7 +24,8 @@
         <div class="menu__spacer"></div>
 
         <!-- Pages WITH submenus: labels that switch the right column -->
-        <label class="menu__direct menu__toggle" for="tab-keynotes">Keynote speakers</label>
+        <label class="menu__direct menu__toggle" for="tab-keynotes">Presenters</label>
+        <label class="menu__direct menu__toggle" for="tab-organizers">Organizers</label>
         <label class="menu__direct menu__toggle" for="tab-attendees">For participants</label>
 
         <!-- Optional “reset” (subtle) -->
@@ -68,8 +70,8 @@
         </div>
 
         <!-- Organizer panel -->
-        <div class="menu__panel menu__panel--attendees">
-          <p class="menu__panelTitle">For participants</p>
+        <div class="menu__panel menu__panel--organizers">
+          <p class="menu__panelTitle">Organizers</p>
           <div class="menu__links">
             <a class="menu__linkItem" href="../organizers/overview.html">Overview</a>
             <a class="menu__linkItem" href="../organizers/Genee.html">Inge Genee</a>
