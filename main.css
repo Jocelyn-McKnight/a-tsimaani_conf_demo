@@ -298,8 +298,12 @@ body{
 #tab-attendees:checked ~ .menu__inner .menu__placeholder{ display:none; }
 #tab-attendees:checked ~ .menu__inner .menu__panel--attendees{ display:block; }
 
+#tab-attendees:checked ~ .menu__inner .menu__placeholder{ display:none; }
+#tab-attendees:checked ~ .menu__inner .menu__panel--organizers{ display:block; }
+
 /* Active underline in left column for toggles */
 #tab-keynotes:checked ~ .menu__inner label[for="tab-keynotes"],
+#tab-attendees:checked ~ .menu__inner label[for="tab-organizers"],
 #tab-attendees:checked ~ .menu__inner label[for="tab-attendees"]{
   color: var(--menu-text);
   text-decoration: underline;
