@@ -900,6 +900,43 @@ main{
 }
 
 /* =========================
+   CARDS — single big card
+   ========================= */
+
+.cards.cards--single{
+  grid-template-columns: repeat(12, 1fr); /* keeps compatibility with your card grid */
+}
+
+.cards.cards--single .card--feature{
+  grid-column: span 12;             /* full width = bigger than the others */
+  border-radius: 22px;             /* slightly bigger feel */
+}
+
+.cards.cards--single .card--feature .card-media{
+  height: clamp(220px, 34vw, 360px); /* taller hero-like media */
+}
+
+.cards.cards--single .card--feature .card-body{
+  padding: 22px 22px 24px;          /* roomier */
+}
+
+.cards.cards--single .card--feature .card-title{
+  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+}
+
+.cards.cards--single .card--feature .card-text{
+  font-size: 1.06rem;
+  max-width: 80ch;
+}
+
+/* Optional: slightly stronger hover on the big card */
+.cards.cards--single .card--feature:hover{
+  transform: translateY(-3px);
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.26);
+}
+
+/* =========================
    EMBEDS
    ========================= */
 
