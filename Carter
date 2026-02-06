@@ -1,0 +1,21 @@
+Hi Carter, work on adding all the keywords to this page. we need an entry for each page on the website. I made the frame for you but you will need to add
+all the presenters, organizers, and all the pages in the for participants section. Try to think of any possible thing a guest might search up. Feel free
+to use any resources you need (GPT, google, all the information in the bios and stuff). You might be able to feed gpt the bios and ask it for 5 keywords.
+Always have the names as key words. Let me know if you need anything!!!
+
+    const searchIndex = [
+      { title: "Home", url: "index.html", keywords: "conference homepage" },
+      { title: "About", url: "about.html", keywords: "about theme mission" },
+      { title: "Nomination", url: "nomination.html", keywords: "blank blank blank" },
+      { title: "Program", url: "program.html", keywords: "schedule sessions panels workshop dinner lunch breakfast food banquet" },
+      { title: "Registration", url: "registration.html", keywords: "register fees deadlines" },
+      { title: "Contact", url: "./", keywords: "email contact inge genee" },
+      { title: "Presenters", url: "presenters/overview.html", keywords: "keynotes speakers" },
+      { title: "Little Bear", url: "presenters/littlebear.html", keywords: "leroy little bear littlebear" },
+
+      { title: "Organizers", url: "organizers/overview.html", keywords: "blank blank" }
+      { title: "Genee", url: "organizers/genee.html", keywords: "inge genee piitaakii" }
+
+      { title: "For Participants", url: "participants/overview.html", keywords: "travel accessibility accommodations support" },
+      { title: "accommodations", url: "participants/accommodations.html", keywords: "accommodations hotel" },
+    ];
