@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>A'tsimaani</title>
+
+  <link rel="stylesheet" href="../main.css" />
+  <link rel="icon" type="image/x-icon" href="../img/logo.ico">
+</head>
+
+<body>
+<div id="header"></div>
+
+<script>
+  fetch('smallheader.html')
+    .then(r => {
+      if (!r.ok) throw new Error('Could not load header.html');
+      return r.text();
+    })
+    .then(html => {
+      document.getElementById('header').innerHTML = html;
+      initSearch(); // this will work after we define initSearch below
+    })
+    .catch(err => console.error('Header load failed:', err));
+</script>
+  
+    <!-- MAIN -->
+    <main>
+<section class="profile-card">
+  <div class="profile-card__image"
+       style="background-image: url('../img/gionet.jpg');"
+       aria-label="Portrait of Leroy Littlebear">
+  </div>
+
+  <div class="profile-card__content">
+    <h1 class="profile-card__name">Nikita Gionet</h1>
+
+    <p>
+      Nikita Gionet is a Project Coordinator for the Mentor-Apprentice Program with ECE-Indigenous Languages Secretariat. Her Dëne Sųłıné name is
+      T'áncháy, which means "flower" and was given to her by her grandfather. Born in Yellowknife, NT, she grew up in Lutsel K'e, NT, where she was 
+      immersed in the Dëne Sųłıné language on a daily basis. 
+    </p>
+    <p>
+      Nikita is passionate about revitalizing her ancestral languages and shares her knowledge and experiences with her family. She enjoys helping 
+      others who are on a similar journey to learn an Indigenous language. As a role model, a mother, a language learner, moose hide tanner, and hockey 
+      player, she strives to inspire her community members to reconnect with their languages.
+    </p>
+    <p>
+      Nikita's commitment, leadership, and passion for revitalizing Indigenous languages fuel her efforts in preserving cultural identity and promoting 
+      holistic well-being.
+    </p>
+  </div>
+</section>
+    </main>
+
+        <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-text">© <span id="year"></span> A'tsimaani. All rights reserved.</p>
+        <a class="footer-contact" href="../contact.html">Contact</a>
+      </div>
+    </footer>
+
+  </div><!-- /.layout -->
+
+  <!-- JS ONLY FOR SEARCH -->
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Search modal
+    const body = document.body;
+    const searchBtn = document.getElementById('searchBtn');
+    const search = document.getElementById('search');
+    const searchClose = document.getElementById('searchClose');
+    const searchOverlay = document.getElementById('searchOverlay');
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+
+    // Add pages here as you create them
+    const searchIndex = [
+      { title: "Home", url: "./", keywords: "conference homepage" },
+      { title: "About", url: "about.html", keywords: "about theme mission" },
+      { title: "Program", url: "program.html", keywords: "schedule sessions panels workshop dinner lunch breakfast food banquet" },
+      { title: "Registration", url: "registration.html", keywords: "register fees deadlines" },
+      { title: "Contact", url: "contact.html", keywords: "email contact inge genee" },
+      { title: "Keynote speakers", url: "keynotes/overview.html", keywords: "keynotes speakers leroy little Bear niitsitapi ai abundance intelligence michael sullivan aiyana twigg weber" },
+      { title: "For attendees", url: "participants/overview.html", keywords: "travel accessibility accommodations support" },
+      { title: "Accommodations", url: "participants/accommodations.html", keywords: "hotel lodging stay" },
+      { title: "Financial support", url: "participants/financial.html", keywords: "funding bursary travel grant" }
+    ];
+
+    function openSearch() {
+      body.classList.add('search-open');
+      search.setAttribute('aria-hidden', 'false');
+      searchOverlay.setAttribute('aria-hidden', 'false');
+      searchInput.value = '';
+      searchResults.innerHTML = '';
+      searchInput.focus();
+    }
+
+    function closeSearch() {
+      body.classList.remove('search-open');
+      search.setAttribute('aria-hidden', 'true');
+      searchOverlay.setAttribute('aria-hidden', 'true');
+      searchBtn.focus();
+    }
+
+    function escapeHtml(str){
+      return String(str).replace(/[&<>"']/g, s => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+      }[s]));
+    }
+
+    function runSearch(q){
+      const query = q.trim().toLowerCase();
+      if(!query){
+        searchResults.innerHTML = "";
+        return;
+      }
+
+      const results = searchIndex.filter(item => {
+        const hay = (item.title + " " + item.keywords).toLowerCase();
+        return hay.includes(query);
+      }).slice(0, 12);
+
+      if(results.length === 0){
+        searchResults.innerHTML = `<p class="search__empty">No results for “${escapeHtml(q)}”.</p>`;
+        return;
+      }
+
+      searchResults.innerHTML = `
+        <ul class="search__list">
+          ${results.map(r => `
+            <li class="search__item">
+              <a class="search__link" href="${r.url}">${escapeHtml(r.title)}</a>
+              <span class="search__url">${escapeHtml(r.url)}</span>
+            </li>
+          `).join("")}
+        </ul>
+      `;
+    }
+
+    searchBtn.addEventListener('click', openSearch);
+    searchClose.addEventListener('click', closeSearch);
+    searchOverlay.addEventListener('click', closeSearch);
+    searchInput.addEventListener('input', (e) => runSearch(e.target.value));
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && body.classList.contains('search-open')) closeSearch();
+    });
+  </script>
+
+</body>
+</html>
