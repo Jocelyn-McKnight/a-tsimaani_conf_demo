@@ -4,18 +4,18 @@ to use any resources you need (GPT, google, all the information in the bios and 
 Always have the names as key words. Let me know if you need anything!!!
 
     const searchIndex = [
-      { title: "Home", url: "index.html", keywords: "conference homepage" },
-      { title: "About", url: "about.html", keywords: "about theme mission" },
-      { title: "Nomination", url: "nomination.html", keywords: "blank blank blank" },
-      { title: "Program", url: "program.html", keywords: "schedule sessions panels workshop dinner lunch breakfast food banquet" },
+      { title: "Home", url: "index.html", keywords: "conference homepage home dates locations" },
+      { title: "About", url: "about.html", keywords: "about theme mission blackfoot indigenous language revitalization rematriation" },
+      { title: "Nomination", url: "nomination.html", keywords: "nomination nominate revitalization teaching rematriation work opportunities opportunity" },
+      { title: "Program", url: "program.html", keywords: "schedule sessions panels workshop dinner lunch breakfast food banquet date dates location themes theme keynote demonstration break breaks supper prayer closing starts times" },
       { title: "Registration", url: "registration.html", keywords: "register fees deadlines" },
-      { title: "Contact", url: "./", keywords: "email contact inge genee" },
-      { title: "Presenters", url: "presenters/overview.html", keywords: "keynotes speakers" },
-      { title: "Little Bear", url: "presenters/littlebear.html", keywords: "leroy little bear littlebear" },
+      { title: "Contact", url: "./", keywords: "email contact inge genee location accessibility help support" },
+      { title: "Presenters", url: "presenters/overview.html", keywords: "keynotes speakers presenters" },
+      { title: "Little Bear", url: "presenters/littlebear.html", keywords: "leroy little bear littlebear presenter traditional" },
 
-      { title: "Organizers", url: "organizers/overview.html", keywords: "blank blank" }
+      { title: "Organizers", url: "organizers/overview.html", keywords: "organizers carter provost inge genee annbelle chatsis caroline russell mary fox alex smith jocelyn mcknight aj junkar meghan garner jamie foster nabeel al jahan" }
       { title: "Genee", url: "organizers/genee.html", keywords: "inge genee piitaakii" }
 
-      { title: "For Participants", url: "participants/overview.html", keywords: "travel accessibility accommodations support" },
-      { title: "accommodations", url: "participants/accommodations.html", keywords: "accommodations hotel" },
+      { title: "For Participants", url: "participants/overview.html", keywords: "travel accessibility accommodations support lethbridge alberta" },
+      { title: "accommodations", url: "participants/accommodations.html", keywords: "accommodations hotel rates prices rooms airbnb motel" },
     ];
