@@ -10,137 +10,135 @@
 </head>
 
 <body>
-<div id="header"></div>
+  <!-- HEADER include target -->
+  <div id="header"></div>
 
-<script>
-  fetch('header.html')
-    .then(r => {
-      if (!r.ok) throw new Error('Could not load header.html');
-      return r.text();
-    })
-    .then(html => {
-      document.getElementById('header').innerHTML = html;
-      initSearch(); // this will work after we define initSearch below
-    })
-    .catch(err => console.error('Header load failed:', err));
-</script>
-
-
-
-    <!-- MAIN -->
-    <main>
-      <div class="wrap">
-        <p class="blurb">
-          Please join us for four days of presentations, workshops, panels, and training sessions focused on Blackfoot 
-          language rematriation. Registration is open until March 3rd!
-        </p>
-        <p class="blurb">
-          Dates: March 9-12, 2026
-        </p>
-        <p class="blurb">
-          Locations: Iniskim University of Lethbridge (March 9th) and The Coast Lethbridge Hotel and Conference Centre (March 10th-12th).
-        </p>
-        <p class="blurb">
-          Themes: Honouring language champions, Blackfoot archive launch, Storytelling, Adult immersion programs, Language and wellness, School and community, Language and technology, and Lifelong language learning.
-        </p>
-
-<section class="cards cards--single">
-  <a class="card card--feature" href="nomination.html">
-    <div class="card-media" style="background-image:url('img/skyline.jpg');"></div>
-
-    <div class="card-body">
-      <h3 class="card-title">Nominate a Niitsi’powahsini Language Champion!</h3>
-      <p class="card-text">
-        Do you know someone whose language work deserves to be recognized?</p>
-      <p class="card-text">
-        A Niitsi'powahsini Language Champion is someone who has put work towards the revitalization, rematriation, teaching, maintenance and support
-        of the Blackfoot language. We want to recognize their work at a ceremony during the conference banquet on Monday March 9, 2026.
+  <!-- MAIN -->
+  <main>
+    <div class="wrap">
+      <p class="blurb">
+        Please join us for four days of presentations, workshops, panels, and training sessions focused on Blackfoot
+        language rematriation. Registration is open until March 3rd!
       </p>
-      <p style="color: #FF8000;">
-        <b><u>Click here to learn how you can nominate a Language Champion</u></b>
+      <p class="blurb">
+        Dates: March 9-12, 2026
       </p>
-    </div>
-  </a>
-</section>
+      <p class="blurb">
+        Locations: Iniskim University of Lethbridge (March 9th) and The Coast Lethbridge Hotel and Conference Centre (March 10th-12th).
+      </p>
+      <p class="blurb">
+        Themes: Honouring language champions, Blackfoot archive launch, Storytelling, Adult immersion programs, Language and wellness, School and community, Language and technology, and Lifelong language learning.
+      </p>
 
-        
-<h2 class="section-title">Explore</h2>
+      <section class="cards cards--single">
+        <a class="card card--feature" href="nomination.html">
+          <div class="card-media" style="background-image:url('img/skyline.jpg');"></div>
 
-<div class="cards cards--three">
-  <a class="card" href="registration.html">
-    <div class="card-media" style='background-image:url("img/webs/yellow.png")'></div>
-    <div class="card-body">
-      <h3 class="card-title">Registration</h3>
-      <p class="card-text">Open until March 3rd.</p>
-      <div class="card-meta"><span>Register</span><span aria-hidden="true">→</span></div>
-    </div>
-  </a>
+          <div class="card-body">
+            <h3 class="card-title">Nominate a Niitsi’powahsini Language Champion!</h3>
+            <p class="card-text">
+              Do you know someone whose language work deserves to be recognized?
+            </p>
+            <p class="card-text">
+              A Niitsi'powahsini Language Champion is someone who has put work towards the revitalization, rematriation, teaching, maintenance and support
+              of the Blackfoot language. We want to recognize their work at a ceremony during the conference banquet on Monday March 9, 2026.
+            </p>
+            <p style="color: #FF8000;">
+              <b><u>Click here to learn how you can nominate a Language Champion</u></b>
+            </p>
+          </div>
+        </a>
+      </section>
 
-  <a class="card" href="participants/overview.html">
-    <div class="card-media" style='background-image:url("img/webs/lethdowntown.jpg")'></div>
-    <div class="card-body">
-      <h3 class="card-title">For Participants</h3>
-      <p class="card-text">Travel info, accommodations, and local details.</p>
-      <div class="card-meta"><span>Practical info</span><span aria-hidden="true">→</span></div>
-    </div>
-  </a>
+      <h2 class="section-title">Explore</h2>
 
-  <a class="card" href="program.html">
-    <div class="card-media" style='background-image:url("img/webs/uhall.png")'></div>
-    <div class="card-body">
-      <h3 class="card-title">Program</h3>
-      <p class="card-text">Browse the schedule, sessions, and workshops.</p>
-      <div class="card-meta"><span>Schedule</span><span aria-hidden="true">→</span></div>
-    </div>
-  </a>
+      <div class="cards cards--three">
+        <a class="card" href="registration.html">
+          <div class="card-media" style='background-image:url("img/webs/yellow.png")'></div>
+          <div class="card-body">
+            <h3 class="card-title">Registration</h3>
+            <p class="card-text">Open until March 3rd.</p>
+            <div class="card-meta"><span>Register</span><span aria-hidden="true">→</span></div>
+          </div>
+        </a>
 
-  <a class="card" href="presenters/overview.html">
-    <div class="card-media" style='background-image:url("img/webs/drum.jpg")'></div>
-    <div class="card-body">
-      <h3 class="card-title">Presenters</h3>
-      <p class="card-text">Meet the presenters.</p>
-      <div class="card-meta"><span>Speakers</span><span aria-hidden="true">→</span></div>
-    </div>
-  </a>
+        <a class="card" href="participants/overview.html">
+          <div class="card-media" style='background-image:url("img/webs/lethdowntown.jpg")'></div>
+          <div class="card-body">
+            <h3 class="card-title">For Participants</h3>
+            <p class="card-text">Travel info, accommodations, and local details.</p>
+            <div class="card-meta"><span>Practical info</span><span aria-hidden="true">→</span></div>
+          </div>
+        </a>
 
-  <a class="card" href="organizers/overview.html">
-    <div class="card-media" style='background-image:url("img/webs/train.jpg")'></div>
-    <div class="card-body">
-      <h3 class="card-title">Organizers</h3>
-      <p class="card-text">Meet the organizers.</p>
-      <div class="card-meta"><span>Team</span><span aria-hidden="true">→</span></div>
-    </div>
-  </a>
-</div>
+        <a class="card" href="program.html">
+          <div class="card-media" style='background-image:url("img/webs/uhall.png")'></div>
+          <div class="card-body">
+            <h3 class="card-title">Program</h3>
+            <p class="card-text">Browse the schedule, sessions, and workshops.</p>
+            <div class="card-meta"><span>Schedule</span><span aria-hidden="true">→</span></div>
+          </div>
+        </a>
 
+        <a class="card" href="presenters/overview.html">
+          <div class="card-media" style='background-image:url("img/webs/drum.jpg")'></div>
+          <div class="card-body">
+            <h3 class="card-title">Presenters</h3>
+            <p class="card-text">Meet the presenters.</p>
+            <div class="card-meta"><span>Speakers</span><span aria-hidden="true">→</span></div>
+          </div>
+        </a>
+
+        <a class="card" href="organizers/overview.html">
+          <div class="card-media" style='background-image:url("img/webs/train.jpg")'></div>
+          <div class="card-body">
+            <h3 class="card-title">Organizers</h3>
+            <p class="card-text">Meet the organizers.</p>
+            <div class="card-meta"><span>Team</span><span aria-hidden="true">→</span></div>
+          </div>
+        </a>
+      </div>
 
       <div class="land-acknowledgement">
         <h2>Iniskim University of Lethbridge</h2>
         <p>
-          Our University’s Blackfoot name is Iniskim, meaning Sacred Buffalo Stone. 
-          The University of Lethbridge acknowledges and deeply appreciates the Siksikaitsitapi peoples’ connection 
-          to their traditional territory. We, as people living and benefiting from Blackfoot Confederacy traditional territory, 
-          honour the traditions of people who have cared for this land since time immemorial. We recognize the diverse 
-          population of Aboriginal peoples who attend the University of Lethbridge and the contributions these Aboriginal 
+          Our University’s Blackfoot name is Iniskim, meaning Sacred Buffalo Stone.
+          The University of Lethbridge acknowledges and deeply appreciates the Siksikaitsitapi peoples’ connection
+          to their traditional territory. We, as people living and benefiting from Blackfoot Confederacy traditional territory,
+          honour the traditions of people who have cared for this land since time immemorial. We recognize the diverse
+          population of Aboriginal peoples who attend the University of Lethbridge and the contributions these Aboriginal
           peoples have made in shaping and strengthening the University community in the past, present, and in the future.
         </p>
       </div>
-      
-    </main>
+    </div>
+  </main>
 
-<script>
-  fetch('footer.html')
-    .then(r => {
-      if (!r.ok) throw new Error('Could not load header.html');
-      return r.text();
+  <!-- FOOTER include target -->
+  <div id="footer"></div>
+
+  <!-- Header + Footer loader (loads both, then runs initSearch once if it exists) -->
+  <script>
+    function loadInto(id, file) {
+      return fetch(file)
+        .then(r => {
+          if (!r.ok) throw new Error('Could not load ' + file);
+          return r.text();
+        })
+        .then(html => {
+          const el = document.getElementById(id);
+          if (!el) throw new Error('Missing #' + id + ' container in page HTML');
+          el.innerHTML = html;
+        });
+    }
+
+    Promise.all([
+      loadInto('header', 'header.html'),
+      loadInto('footer', 'footer.html')
+    ])
+    .then(() => {
+      if (typeof initSearch === 'function') initSearch();
     })
-    .then(html => {
-      document.getElementById('footer').innerHTML = html;
-      initSearch(); // this will work after we define initSearch below
-    })
-    .catch(err => console.error('Header load failed:', err));
-</script>
-
-
+    .catch(err => console.error('Header/footer load failed:', err));
+  </script>
 </body>
 </html>
