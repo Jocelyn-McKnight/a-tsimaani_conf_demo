@@ -135,7 +135,7 @@
       return r.text();
     })
     .then(html => {
-      document.getElementById('header').innerHTML = html;
+      document.getElementById('footer').innerHTML = html;
       initSearch(); // this will work after we define initSearch below
     })
     .catch(err => console.error('Header load failed:', err));
