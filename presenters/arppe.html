@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>A'tsimaani</title>
+
+  <link rel="stylesheet" href="../main.css" />
+  <link rel="icon" type="image/x-icon" href="../img/logo.ico">
+</head>
+
+<body>
+<div id="header"></div>
+
+<script>
+  fetch('smallheader.html')
+    .then(r => {
+      if (!r.ok) throw new Error('Could not load header.html');
+      return r.text();
+    })
+    .then(html => {
+      document.getElementById('header').innerHTML = html;
+      initSearch(); // this will work after we define initSearch below
+    })
+    .catch(err => console.error('Header load failed:', err));
+</script>
+  
+    <!-- MAIN -->
+    <main>
+<section class="profile-card">
+  <div class="profile-card__image"
+       style="background-image: url('../img/person.jpg');"
+       aria-label="Portrait of Leroy Littlebear">
+  </div>
+
+  <div class="profile-card__content">
+    <h1 class="profile-card__name">Antti Arppe</h1>
+
+    <p>
+      I am Professor of Quantitative Linguistics in the Department of Linguistics at the University of Alberta, where I have worked since Fall 2012.
+      In May 2013, I founded the Alberta Language Technology Lab (ALTLab) which I continue to direct, focusing on the development of language technological 
+      tools and applications for Indigenous Languages.
+      Starting from May 2013, I am Principal Investigator in the partnership project 21st century tools for indigenous languages, currently funded by SSHRC for 2019-2026.
+      Currently, I am also the Past President of the ACL Special Interest Group on Endangered Languages (SIGEL), and the Past Chair of the Canadian Initiative for 
+      Nordic Studies (CINS).
+    </p>
+  </div>
+</section>
+
+       <div class="wrap">
+       <h2 class="section-title">Using a Blackfoot computational model to generate classroom exercises</h2>
+        <p class="blurb">
+          Using a Blackfoot computational model to generate classroom exercises
+          Antti Arppe, Felipe Banados Schwerter and Katie Schmirler
+        </p>
+        <p>
+          Blackfoot learners must practice conjugating verb forms and using them properly in various situations.
+          Memorizing conjugation tables is ineffective, and does not help learners practice the forms as needed in natural
+          discourse. We propose generating dialogue-style exercise materials for practicing the full range of verb forms,
+          by combining a Blackfoot computational model encoding the language's word structure with exercise templates
+          describing question-answer pairs. The computational model can also support analyzing responses and provide
+          feedback to the learner. We will present a prototype application for Blackfoot, based on preceding work for
+          Plains Cree (Bontogon et al. 2017). Importantly, while access to fluent Blackfoot speakers is limited, this
+          computational exercise platform can be made available on-line at any time of the day for many learners. Such a
+          platform does not get tired, providing learners opportunities to practice as much as they need, in an anonymous
+          fashion, without fear of critique.
+        </p>
+      </div>
+    </main>
+
+        <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-text">© <span id="year"></span> A'tsimaani. All rights reserved.</p>
+        <a class="footer-contact" href="../contact.html">Contact</a>
+      </div>
+    </footer>
+</body>
+</html>
