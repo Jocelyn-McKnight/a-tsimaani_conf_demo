@@ -21,7 +21,7 @@
     })
     .then(html => {
       document.getElementById('header').innerHTML = html;
-      initSearch(); // this will work after we define initSearch below
+      // initSearch removed
     })
     .catch(err => console.error('Header load failed:', err));
 </script>
