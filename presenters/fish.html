@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>A'tsimaani</title>
+
+  <link rel="stylesheet" href="../main.css" />
+  <link rel="icon" type="image/x-icon" href="../img/logo.ico">
+</head>
+
+<body>
+<div id="header"></div>
+
+<script>
+  fetch('smallheader.html')
+    .then(r => {
+      if (!r.ok) throw new Error('Could not load smallheader.html');
+      return r.text();
+    })
+    .then(html => {
+      document.getElementById('header').innerHTML = html;
+      // initSearch removed
+    })
+    .catch(err => console.error('Header load failed:', err));
+</script>
+  
+    <!-- MAIN -->
+    <main>
+<section class="profile-card">
+  <div class="profile-card__image"
+       style="background-image: url('../img/fish.png');"
+       aria-label="Portrait of Leroy Littlebear">
+  </div>
+
+  <div class="profile-card__content">
+    <h1 class="profile-card__name">Naatosi Fish</h1>
+
+    <p>
+          Naatosi has centered revitalizing Blackfeet language and culture in his educational and career endeavors his whole life; Naatosi attended Nizipowahsin, the Blackfeet 
+          Immersion School in Browning Montana and continued his pursuit through his research at the University of Montana, teaching Blackfeet history and language at Blackfeet 
+          Community College, and developing Blackfeet language learning resources for educators. Naatosi co-published his research on Blackfoot prosody with Dr. Mizuki Miyashita 
+          in the 2017 Honoring Our Teachers monograph by Northern Arizona University. Naatosi currently works for Indigenous Impact Co. as a Communications and Marketing Manager, 
+          and is pursuing a master's degree in Native American Linguistics at the University of Arizona, Tucson.
+    </p>
+  </div>
+</section>
+
+       <div class="wrap">
+       <h2 class="section-title">Tools for learning Blackfoot word melody: Pitch Art, Praat and MeTILDA</h2>
+        <p class="blurb">
+          1. Rhythm and Melody in Blackfoot (Mizuki Miyashita) It is challenging for English speaking learners to perceive the rhythm and melody of Blackfoot words. 
+          To address this, my team has been developing a tool to help learners perceive the unique rhythm and melody of Blackfoot called MeTILDA. This tool allows users 
+          to extract the rhythmic and melodic elements from actual words and play them back in isolation (without vowel or consonant sounds). This tool can be utilized by 
+          teachers when instructing pronunciation. I will describe the unique rhythm and melody of Blackfoot and how second language learners may make pronunciation errors 
+          with respect to rhythm and melody. Then I will explain how MeTILDA works and potential impact on pronunciation teaching. 2. How to use Pitch Art in pronunciation 
+          instruction (Naatosi Fish) Pitch Art is a visual teaching tool that represents the word melody of Blackfoot words. By illustrating how pitch rises and falls across 
+          syllables, it helps learners sound more native-like. This workshop introduces the use of Pitch Art with learners of Blackfoot to support pronunciation. Participants 
+          will receive a brief overview of the online tool used to create Pitch Art, an introduction to the concept of word melody, and strategies for using Pitch Art in the 
+          classroom. 3. Praat and MeTILDA workshop (Mizuki and Naatosi) This workshop is offered for participants interested in using MeTILDA to create Pitch Art images for 
+          Blackfoot Word Melody. Participants will receive a brief introduction to understanding word melody, followed by have hands-on training in MeTILDA to create pitch art
+        </p>
+      </div>
+    </main>
+
+        <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-text">© <span id="year"></span> A'tsimaani. All rights reserved.</p>
+        <a class="footer-contact" href="../contact.html">Contact</a>
+      </div>
+    </footer>
+</body>
+</html>
